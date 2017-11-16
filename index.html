@@ -5,10 +5,10 @@
     <title>Cheapo Mail</title>
 
     <!-- you can modify this as needed or to your preference -->
+    
     <link href="index.css" type="text/css" rel="stylesheet">
 
     <script src="jquery-3.1.1.min.js" type="text/javascript"></script>
-
     <!-- you write this -->
     <script src="index.js" type="text/javascript"></script>
 </head>
@@ -21,11 +21,11 @@
         </div>
         <div class="page login">
             <p class="greeting">Welcome to Cheapo Mail - a simple messaging system that only sends mail to other Cheapo Users.</p>
-            <form id="loginForm" action="" method="post">
+            <form id="loginForm" action="login.php" method="post">
                 <p class="instruction">Sign in to continue</p>
                 <input id="username" placeholder="Username" type="text" name="username" required="" autofocus=""><br>
                 <input id="pass" placeholder="Password" type="password" name="pass" required=""><br>
-                <button type="submit">Sign In</button><br>
+                <button type="submit" id = "loginbutton">Sign In</button><br>
             </form>
             <p id="error"></p>
         </div>
