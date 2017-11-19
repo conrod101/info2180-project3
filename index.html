@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html class="gr__testpro-conrod101_c9users_io">
 
 <head>
@@ -26,6 +27,11 @@
                 <input id="username" placeholder="Username" type="text" name="username" required="" autofocus=""><br>
                 <input id="pass" placeholder="Password" type="password" name="pass" required=""><br>
                 <button type="submit" id = "loginbutton">Sign In</button><br>
+                
+                <div id="errMsg">
+                    <?php if(!empty($_SESSION['errMsg'])) { echo $_SESSION['errMsg']; } ?>
+                    </div>
+                    <?php unset($_SESSION['errMsg']); ?>
             </form>
             <p id="error"></p>
         </div>

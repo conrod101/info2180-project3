@@ -1,4 +1,52 @@
-<?php header("Location: adminpage.html");
+<?php 
+
+$host = getenv('IP');
+$user = getenv('C9_USER');
+$password = "";
+$database = "cheapomail";
+$dbport = 3306;
+
+
+session_start();
+
+$db = new PDO("mysql:host=$host;dbname=$database", $user,$password);
+
+
+if ($_SERVER[REQUEST_METHOD] == "POST"){
+    
+    if(isset($_POST["username"]) and isset($_POST["pass"])){
+        //Sanitizationof user input
+        $username  =  strip_tags($_POST["username"]);
+        $username  =  stripslashes($username);
+        $password  =  strip_tags($_POST["pass"]);
+        $password  =  stripslashes($password);
+        
+        //Vaidation of login data
+        $Query     = "SELECT * FROM users WHERE username = '{$username}';";
+        $statement = $db->prepare($Query);
+        $statement->bindParam(':username', $_POST['username'], PDO::PARAM_STR);
+        $statement->execute();
+        $user      = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        //Handling of server response
+        if ($statement->rowCount()==1){
+            if(password_verify($password,$user['password']) and $username = 'admin'){
+                $_SESSION['logged_in'] = true;
+                $_SESSION['user'] = $username;
+                header('Location: adminpage.html');
+                }
+            //username is not admin
+            }
+        else {
+             $_SESSION['errMsg'] = "Invalid username or password";
+             header("Location: index.html");
+             echo '<div>ERROR<div>';
+            }
+        }
+    }
+    
+/*
+header("Location: adminpage.html");
 //header('Content-Type: text/html; charset=ISO-8859-15');   //needed to process strings with accents
 
     session_start();
@@ -37,5 +85,5 @@
     } else {
         print_r(json_encode(array("result"=>"password_mismatch"))); // print json object with appropriate 'result'
     }
+    */
     
-?>
