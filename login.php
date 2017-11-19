@@ -32,15 +32,14 @@ if ($_SERVER[REQUEST_METHOD] == "POST"){
         if ($statement->rowCount()==1){
             if(password_verify($password,$user['password']) and $username = 'admin'){
                 $_SESSION['logged_in'] = true;
-                $_SESSION['user'] = $username;
-                header('Location: adminpage.html');
+                $_SESSION['user']      = $username;
+                $_SESSION['id']        = $user['id'];
+                header("Location: adminpage.html");
                 }
             //username is not admin
             }
         else {
-             $_SESSION['errMsg'] = "Invalid username or password";
              header("Location: index.html");
-             echo '<div>ERROR<div>';
             }
         }
     }

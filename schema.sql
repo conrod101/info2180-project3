@@ -9,13 +9,13 @@ CREATE TABLE `users` (
 	`firstname` varchar(20) NOT NULL,
 	`lastname` varchar(20) NOT NULL,
 	`username` varchar(16) NOT NULL,
-	`password` varchar(32) NOT NULL,
+	`password` varchar(255) NOT NULL,
 	UNIQUE (`username`)
 ) ENGINE=MyISAM AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
 
-/*LOCK TABLES `users` WRITE; */
-INSERT INTO `users` VALUES (1,'Conrod', 'Smith', 'admin', 'password123');
-/*UNLOCK TABLES;  */
+
+INSERT INTO `users` VALUES (1,'Conrod', 'Smith', 'admin', '$2y$10$QcPm9lvwvpzUiqQZXn3shOhnQxmmLgndDQODLjFTrPn3cKKo1T2gS');
+
 
 
 DROP TABLE IF EXISTS `messages`;
