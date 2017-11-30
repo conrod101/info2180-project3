@@ -1,3 +1,15 @@
+<?php
+
+
+session_start();
+
+if(!$_SESSION['logginSuccess']){
+	header('Location: index.php');
+}
+
+
+?>
+
 <!DOCTYPE html> 
 <html>
     <head>

@@ -1,3 +1,15 @@
+<?php
+
+
+session_start();
+
+if(!$_SESSION['logginSuccess']){
+	header('Location: index.php');
+}
+
+
+?>
+
 <html class="gr__testpro-conrod101_c9users_io">
 
 <head>
