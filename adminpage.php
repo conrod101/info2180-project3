@@ -1,5 +1,3 @@
-
-
 <html class="gr__testpro-conrod101_c9users_io">
 
 <head>
@@ -8,16 +6,16 @@
 
     <!-- you can modify this as needed or to your preference -->
     <link href="index.css" type="text/css" rel="stylesheet">
-	<script src="jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="jquery-3.1.1.min.js" type = "text/javascript"></script>
     <script src="adminpage.js" type="text/javascript"></script>
-
     <!-- you write this -->
 </head>
 <body>
 <div class="container">
+		<a href = "logout.php"><button id="logout">Logout</button></a>
     <div class="header">
         <h1>Cheapo Mail</h1>
-    	<a href = "logout.php"><button id="logout">Logout</button></a>
+    
     </div>
 
 	<div class="page admin">

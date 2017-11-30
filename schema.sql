@@ -10,11 +10,11 @@ CREATE TABLE `users` (
 	`lastname` varchar(20) NOT NULL,
 	`username` varchar(16) NOT NULL,
 	`password` varchar(255) NOT NULL,
-	UNIQUE (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
+	 UNIQUE (`username`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `users` VALUES (1,'Conrod', 'Smith', 'admin', '$2y$10$QcPm9lvwvpzUiqQZXn3shOhnQxmmLgndDQODLjFTrPn3cKKo1T2gS');
+INSERT INTO `users` VALUES (0,'Conrod', 'Smith', 'admin', '$2y$10$QcPm9lvwvpzUiqQZXn3shOhnQxmmLgndDQODLjFTrPn3cKKo1T2gS');
 
 
 

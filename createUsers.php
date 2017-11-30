@@ -1,8 +1,10 @@
 <?php
 
+header("Cache-Control: no-cache, must-revalidate");
+
 $host     = getenv('IP');
 $user     = getenv('C9_USER');
-$password = "";
+$dbpassword = "";
 $database = "cheapomail";
 $dbport   = 3306;
 
@@ -33,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $password2 = stripslashes($password2);
    
    //Create database connection
-    $db = new PDO("mysql:host=$host;dbname=$database", $user,$password);
+    $db = new PDO("mysql:host=$host;dbname=$database", $user,$dbpassword);
     
     //Prepare and execute query
     $Query     = "SELECT * FROM users WHERE username = '{$username}';";
@@ -67,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     //Execute insert statement
     if ($_SESSION[errors]['no_errors']){
 
-    $password = password_hash($password,PASSWORD_DEFAULT);
+    $password = password_hash($password1,PASSWORD_DEFAULT);
     $stmt     = "INSERT INTO users (firstname,lastname,username,password) VALUES ('{$firstname}','{$lastname}','{$username}','{$password}');";
     $result   = $db->prepare($stmt);
     $result   ->execute();
