@@ -25,8 +25,9 @@ CREATE TABLE `messages` (
 	`user_id` int(11) NOT NULL,
 	`subject` varchar(128) NOT NULL,
 	`body` mediumtext NOT NULL,
-	`date_sent` datetime NOT NULL
+	`date_sent` text NOT NULL
 );
+
 
 DROP TABLE IF EXISTS `messages_read`;
 CREATE TABLE `messages_read` (
