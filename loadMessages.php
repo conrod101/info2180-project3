@@ -18,21 +18,22 @@ $allMessages = array();
 $db = new PDO("mysql:host=$host;dbname=$database", $user,$password);
 $db -> setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
-$Query     = "SELECT * FROM messages WHERE recipient_ids = '{$_SESSION['id']}';";
+$Query     = "select messages.*,users.username from users join messages on messages.user_id = users.id where recipient_ids = '{$_SESSION['id']}';";
 $statement = $db->prepare($Query);
 $statement->bindParam(':recipient', $recipient, PDO::PARAM_STR);
 $statement->execute();
 $messages  = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-//echo json_encode($messages);
 
-//Processing Query Results
-foreach($messages as $message){
-    $messageObject = new Message($message['id'], $message['user_id'], $message['subject'],$message['date_sent'],$message['body']);
-    array_push($allMessages,$messageObject);
+if ($statement->rowCount()>0){
+    //Processing Query Results
+    foreach($messages as $message){
+        $messageObject = new Message($message['id'], $message['username'], $message['subject'],$message['date_sent'],$message['body']);
+        array_push($allMessages,$messageObject);
+    }
+    echo json_encode($allMessages);
 }
 
-echo json_encode($allMessages);
 
 
 
