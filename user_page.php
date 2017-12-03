@@ -176,7 +176,7 @@ if(!$_SESSION['logginSuccess']){
                                                 <p>To: </p>
                                             </div>
                                             <div class="col-md-9">
-                                                <input id="to" type="text" name="search" placeholder="Enter e-mail" class="form-control">
+                                                <input id="to" type="text" name="search" placeholder="Recipient" class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -192,7 +192,7 @@ if(!$_SESSION['logginSuccess']){
                                                 <p>Message: </p>
                                             </div>
                                             <div class="col-md-9">
-                                                <textarea id="message" class="form-control" rows="10"></textarea>
+                                                <textarea id="message" class="form-control" rows="10" required></textarea>
                                             </div>
                                         </div>
                                     </form>

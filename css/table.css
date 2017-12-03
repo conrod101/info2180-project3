@@ -98,3 +98,6 @@ th.table_header {}
 th.place_holder{
   visibility: none;
 } 
+.message_body{
+  display:none;
+}

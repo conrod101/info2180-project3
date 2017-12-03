@@ -3,7 +3,9 @@ let displayMessage;
 
 let msgs = [{"message_id":"10","sender":"adp100","subject":"Suceess","date_saent":"2017-12-01 19:25:00","body":"Just tried the messaging functionality and it works."},{"message_id":"12","sender":"Abrown","subject":"test","date_sent":"2017-12-01 20:14:08","body":"This be a test "}]
 
-$(document.body).ready(function (){
+$(document).ready(function (){
+    
+    console.log = function(){};
     
     let send              = $("#send");
     let url               = "messages.php";
@@ -115,26 +117,40 @@ $(document.body).ready(function (){
      }
     
     function displayMessage(messageObject){
-        let newRow
+        let newRow;
+        let rows    = $("tbody tr");
+        let numRows = rows.length;
+        
         if(isUnreadMessage(messageObject)){
-            newRow = $(`<tr style="font-weight:bold" opened = 'false'></tr>`);
+            newRow = $(`<tr style="font-weight:bold"></tr>`);
         }
         else{
-            newRow = $(`<tr opened = 'false'></tr>`);
+            newRow = $(`<tr></tr>`);
         }
+        
+        if(numRows>10){
+            $(rows[rows.length - 1]).remove();
+        }
+        
+        $(newRow).data("additionalData",{
+            "message_id": messageObject['message_id'],
+            "firstname":messageObject['firstname'],
+            "lastname":messageObject['lastname'],
+            "body":messageObject['body']
+        })
         
         
         let message_id      = $(`<td class = 'message_id'>${messageObject['message_id']}<td>`);
         let message_date    = $(`<td>${messageObject['date_sent']}<td>`);
         let message_sender  = $(`<td>${messageObject['sender']}<td>`);
         let message_subject = $(`<td>${messageObject['subject']}<td>`);
-      //  let message_body    = $(`<td>${messageObject['body']}<td>`);
+        let message_body    = $(`<td class = 'message_body'>${messageObject['body']}<td>`);
         
         newRow.append(message_sender);
         newRow.append(message_subject);
         newRow.append(message_date);
         newRow.append(message_id);
-        //newRow.append(message_body);
+        newRow.append(message_body);
         
         $("tbody").prepend(newRow);
     }
@@ -186,7 +202,7 @@ $(document.body).ready(function (){
             data = Data;
         }
         
-        //console.log = function(){}
+        console.log = function(){}
         let result = data.includes(messageObject['message_id']);
         console.log(!result);
         return !result;

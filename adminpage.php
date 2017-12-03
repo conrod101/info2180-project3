@@ -34,7 +34,7 @@ if(!$_SESSION['logginSuccess']){
 		<p class="greeting">Welcome Admin  <span id="name"></span></p>
 
 		<div class="instructions">
-			<p class="instruction">Here you can register users. Just complete and submit the form.</p>
+			<p class="instruction">To add user complete and submit the form.</p>
 			<p class="instruction"><strong>Note:</strong> Password must be at least 8 characters long and must contain a mixture of lower case and upper case letters, and numbers.</p>
 		</div>
 	    <form id="registrationForm" action="" method="post">
