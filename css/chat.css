@@ -5,8 +5,14 @@
         margin-top: 40px;
         height: 90%;
     }
-    #test { border:1px solid black;
-        }
+    .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.panel-body {
+    padding: 15px;}
     .pb-mail-navbar {
         background: #3e3f3a;
         border: none;
@@ -16,24 +22,9 @@
         background-color: #f47c3c;
     }
     
-    .pb-mail-template1 .dropdown-menu>li>a {
-        font-size: 11px;
-        line-height: 22px;
-        font-weight: 500;
-        text-transform: uppercase;
-    }
+ 
     
-    .pb-mail-template1 .dropdown-menu>li>a {
-        display: block;
-        padding: 3px 20px;
-        clear: both;
-        font-weight: normal;
-        line-height: 1.42857143;
-        color: #98978b;
-        white-space: nowrap;
-    }
-    
-    .pb-mail-template1 .btn {
+     .btn {
         display: inline-block;
         margin-bottom: 0;
         font-weight: normal;
@@ -87,3 +78,18 @@
         color: #98978b;
         font-weight: 600;
     }
+  .message_box {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 200%;
+  height: 200px;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.message_area {
+    font-size: 15px;
+}
+.message_id {
+    display:none;
+}

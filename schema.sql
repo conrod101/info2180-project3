@@ -28,6 +28,8 @@ CREATE TABLE `messages` (
 	`date_sent` text NOT NULL
 );
 
+INSERT INTO `messages` VALUES (0,'Jado', 'Jblake', 'hello', '$2y$10$QcPm9lvwvpzUiqQZXn3shOhnQxmmLgndDQODLjFTrPn3cKKo1T2gS', '1/12/2017');
+
 
 DROP TABLE IF EXISTS `messages_read`;
 CREATE TABLE `messages_read` (

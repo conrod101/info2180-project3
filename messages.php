@@ -1,17 +1,16 @@
 <?php
 
-$host     = getenv('IP');
-$user     = getenv('C9_USER');
+$host = getenv('IP');
+$user = getenv('C9_USER');
 $password = "";
 $database = "cheapomail";
-$dbport   = 3306;
+$dbport = 3306;
 
 session_start();
 
 // Create connection
 $db = new PDO("mysql:host=$host;dbname=$database", $user,$password);
 $db -> setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     //Extract and sanitize message Data
@@ -23,12 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     
     $validRecipients = array();
     
+    echo json_encode($_POST['subject']);
     
     foreach($recipients as $recipient){
         
         //Prepare and execute query
         $Query     = "SELECT * FROM users WHERE username = '{$recipient}';";
         $statement = $db->prepare($Query);
+        var_dump($statement);
         $statement->bindParam(':recipient', $recipient, PDO::PARAM_STR);
         $statement->execute();
         $user      = $statement->fetch(PDO::FETCH_ASSOC);
@@ -41,6 +42,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $result -> execute();
         }
     }
-    echo json_encode(array($message,$timestamp));
-    
+    echo json_encode($validRecipients);
 }

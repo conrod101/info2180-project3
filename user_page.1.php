@@ -15,18 +15,19 @@ if(!$_SESSION['logginSuccess']){
         <title>Cheapo Mail</title>
         
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/tab.css">
+<link rel="stylesheet" type="text/css" href="css/tab.css">
+<link rel="stylesheet" type="text/css" href="test.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/font.css">
     <link rel="stylesheet" type="text/css" href="css/chat.css">
     <link rel="stylesheet" type="text/css" href="css/table.css">
-    <link href="index.css" type="text/css" rel="stylesheet">
 
 
     <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="test.js"></script>
     <script type="text/javascript" src="bootstrap.min.js"></script>
     <script type="text/javascript" src="user_page.js"></script>
-
+    <link href="index.css" type="text/css" rel="stylesheet">
     <script src="jquery-3.1.1.min.js" type="text/javascript"></script>
        
       
@@ -123,36 +124,9 @@ if(!$_SESSION['logginSuccess']){
                                         <hr>
                                         
                                         <div id="grid">
-                                            <table class="table table-hover">
-<thead>
-    <tr>
-        <th>Source</th>
-        <th>Subject</th>
-        <th>Date Received</th>
+     
+  
 
-    </tr>
-</thead>
-
-<tbody>
-</tbody>
-</table>
-<!--<div class="divTable blueTable" id = "table">-->
-<!--<div class="divTableBody" id="messagesDisplay">-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="blueTable outerTableFooter">-->
-<!--<div class="tableFootStyle">-->
-<!--<div class="links"><a href="#">«</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">»</a></div>-->
-<!--</div>-->
-<!--</div>-->
-
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- Modal view -->
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
