@@ -22,14 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     
     $validRecipients = array();
     
-    echo json_encode($_POST['subject']);
-    
     foreach($recipients as $recipient){
         
         //Prepare and execute query
         $Query     = "SELECT * FROM users WHERE username = '{$recipient}';";
         $statement = $db->prepare($Query);
-        var_dump($statement);
         $statement->bindParam(':recipient', $recipient, PDO::PARAM_STR);
         $statement->execute();
         $user      = $statement->fetch(PDO::FETCH_ASSOC);

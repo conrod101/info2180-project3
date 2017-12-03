@@ -42,7 +42,7 @@ $(document).ready(function(){
             $(errorBox).append('<p>This username is unavailable<p>');
         }
         if (errorData.no_errors){
-            alert('Sucessful Submission');
+            alert('Successful Submission');
             $(form).trigger('reset');
             errorBox.empty();
         }

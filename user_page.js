@@ -1,14 +1,25 @@
 let addRow;
 let displayMessage;
 
-let msgs = [{"message_id":"10","sender":"3","subject":"Suceess","date_sent":"2017-12-01 19:25:00","body":"Just tried the messaging functionality and it works."},{"message_id":"12","sender":"2","subject":"test","date_sent":"2017-12-01 20:14:08","body":"This be a test "}]
+let msgs = [{"message_id":"10","sender":"3","subject":"Suceess","date_saent":"2017-12-01 19:25:00","body":"Just tried the messaging functionality and it works."},{"message_id":"12","sender":"2","subject":"test","date_sent":"2017-12-01 20:14:08","body":"This be a test "}]
 
 $(document).ready(function (){
     
     let send              = $("#send");
     let url               = "messages.php";
+    let closeButton       = $("#close_btn");
     
-    setInterval(loadMessages,5000);
+    setInterval(loadMessages,1000);
+    
+    closeButton.on("click", function(){
+        $("form")[0].reset();
+    })
+    
+    $("table>tbody>tr").on("click", function(){
+        console.log("clicked");
+        //this.removeAttr("style");
+    })
+    
     
     send.on("click",function(element){
         
@@ -77,7 +88,7 @@ $(document).ready(function (){
      }
     
     function displayMessage(messageObject){
-        let newRow = $(`<tr></tr>`)
+       let newRow = $(`<tr style="font-weight:bold"></tr>`);
         
         let message_id      = $(`<td class = 'message_id'>${messageObject['message_id']}<td>`);
         let message_date    = $(`<td>${messageObject['date_sent']}<td>`);
@@ -91,7 +102,7 @@ $(document).ready(function (){
         newRow.append(message_id);
         //newRow.append(message_body);
         
-        newRow.insertBefore($("tbody"));
+        $("tbody").prepend(newRow);
     }
     
    

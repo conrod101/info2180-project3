@@ -12,7 +12,13 @@
 }
 
 
+.new_message{
+    font-weight: bold;
+}
 
+tr {
+    font-weight:bold;
+}
 
 .open{
     background-color: white;

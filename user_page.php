@@ -61,7 +61,7 @@ if(!$_SESSION['logginSuccess']){
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                                    <a class="navbar-brand" id="brand" href="#">Hello, <u>Abrown</u></a>
+                                    <a class="navbar-brand" id="brand" href="#">Hello, <u><?php echo $_SESSION['user']?></u></a>
                                 </div>
                             </div>
                         </nav>
@@ -123,12 +123,15 @@ if(!$_SESSION['logginSuccess']){
                                         <hr>
                                         
                                         <div id="grid">
-                                            <table class="table table-hover">
+                                            <table border="1" class="table table-hover" id = "messagestable">
 <thead>
-    <tr>
-        <th>Source</th>
-        <th>Subject</th>
-        <th>Date Received</th>
+   
+    <tr id= "head_row">
+        <th class = "table_header">Source</th>
+        <th class = "place_holder"></th>
+        <th class = "table_header">Subject</th>
+        <th></th>
+        <th class = "table_header">Date Received</th>
 
     </tr>
 </thead>
@@ -200,8 +203,8 @@ if(!$_SESSION['logginSuccess']){
                                 </div>
                                 <div class="modal-footer">
                                     
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button id="send" type="button" class="btn btn-primary">Send</button>
+                                    <button type="button" id="close_btn" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button id="send" type="button" class="btn btn-primary" data-dismiss="modal">Send</button>
                                 </div>
                             </div>
                         </div>

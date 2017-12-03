@@ -78,3 +78,20 @@ table.blueTable tfoot .links a{
         border:2px solid blue;
 
 }
+
+th{
+  font-family: 'Tahoma';
+  border-bottom: 2px dashed red;
+}
+
+
+th.table_header{
+  font-size: 16px;
+  text-shadow: 5px grey;
+  color: aquamarine;
+  text-align: center;
+}
+
+th.place_holder{
+  visibility: none;
+} 
