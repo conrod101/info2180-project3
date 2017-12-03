@@ -14,11 +14,13 @@ session_start();
 $db = new PDO("mysql:host=$host;dbname=$database", $user,$password);
 $db -> setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
-
-//$_SESSION['read_messages'] = array();
-//echo json_encode($_SESSION['read_messages']);
+//echo json_encode($_SESSION['read_messages'])
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    
+    if(!isset($_SESSION['read_messages'])){
+        $_SESSION['read_messages'] = array();
+    }
 
     if(!in_array($_POST['message_id'],$_SESSION['read_messages'])){
     
@@ -33,7 +35,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $result =  $db->prepare($stmt);
         $result -> execute();
         
-     //array_map('utf8_encode', $row);
     }
-    echo json_encode($_SESSION['read_messages']);
+    
+    echo json_encode(removeNullValues(($_SESSION['read_messages'])));
 }
+
+function removeNullValues($array){
+	$goodValues = array();
+	
+	foreach($array as $element){
+		if(!$element == null){
+			array_push($goodValues,$element);
+		}
+	}
+	return $goodValues;
+}
+    
+

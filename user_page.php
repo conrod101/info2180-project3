@@ -33,7 +33,7 @@ if(!$_SESSION['logginSuccess']){
         
 	</head>
 
-	<body data-gr-c-s-loaded="true" style="">
+	<body data-gr-c-s-loaded="true" style="" onload = "">
 		
     <div class="container">
 		<a href="logout.php"><button id="logout">Logout</button></a>

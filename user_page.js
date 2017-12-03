@@ -3,11 +3,12 @@ let displayMessage;
 
 let msgs = [{"message_id":"10","sender":"adp100","subject":"Suceess","date_saent":"2017-12-01 19:25:00","body":"Just tried the messaging functionality and it works."},{"message_id":"12","sender":"Abrown","subject":"test","date_sent":"2017-12-01 20:14:08","body":"This be a test "}]
 
-$(document).ready(function (){
+$(document.body).ready(function (){
     
     let send              = $("#send");
     let url               = "messages.php";
     let closeButton       = $("#close_btn");
+
     
     setInterval(loadMessages,1000);
     
@@ -18,6 +19,9 @@ $(document).ready(function (){
     })
     
     $("#messagestable").on("click", "tbody tr", function(){
+        
+        $(this).css("font-weight","");
+        
         let id = $(this).children(".message_id").text();
         
         let readMessageData = {
@@ -111,7 +115,14 @@ $(document).ready(function (){
      }
     
     function displayMessage(messageObject){
-       let newRow = $(`<tr style="font-weight:bold" opened = 'false'></tr>`);
+        let newRow
+        if(isUnreadMessage(messageObject)){
+            newRow = $(`<tr style="font-weight:bold" opened = 'false'></tr>`);
+        }
+        else{
+            newRow = $(`<tr opened = 'false'></tr>`);
+        }
+        
         
         let message_id      = $(`<td class = 'message_id'>${messageObject['message_id']}<td>`);
         let message_date    = $(`<td>${messageObject['date_sent']}<td>`);
@@ -156,4 +167,29 @@ $(document).ready(function (){
             addNewMessage(arrayOfMessageObjects[i]);
         }
     }
+    
+    var data;
+
+    
+    function isUnreadMessage(messageObject){
+        $.ajax({
+            type: "POST",
+            url: "read_messages.php",
+            
+            success: function(response){
+                callBackData(response);
+            }
+                
+        })
+        
+        function callBackData(Data){
+            data = Data;
+        }
+        
+        //console.log = function(){}
+        let result = data.includes(messageObject['message_id']);
+        console.log(!result);
+        return !result;
+    }
+    
 })
