@@ -88,9 +88,12 @@ th{
 th.table_header{
   font-size: 16px;
   text-shadow: 5px grey;
-  color: aquamarine;
+  color: #555;
   text-align: center;
+  box-shadow: 0 0 4px black;
 }
+
+th.table_header {}
 
 th.place_holder{
   visibility: none;

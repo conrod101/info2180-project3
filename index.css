@@ -351,8 +351,9 @@ label {
     #inbox_parag {
         font-size: 22px;
         padding: 11px 5px 5px 11px;
-        color: #98978b;
+        color: #020202;
         font-weight: 600;
+        text-align: justify;
     }
   .message_box {
   border: 1px solid #1C6EA4;

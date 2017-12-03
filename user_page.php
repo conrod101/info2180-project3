@@ -78,7 +78,9 @@ if(!$_SESSION['logginSuccess']){
                                 
                             </div>
                             <div class="collapse navbar-collapse" id="ik">
-                              
+                              <button id="inbox" >
+                            Inbox
+                        </button>
                                 <div id="treeview">
                                 </div>
                             </div>
@@ -117,7 +119,7 @@ if(!$_SESSION['logginSuccess']){
                                         <hr>
                                         
                                         <div id="grid">
-                                            <table border="1" class="table table-hover" id = "messagestable">
+                                            <table  class="table table-hover" id = "messagestable">
 <thead>
    
     <tr id= "head_row">

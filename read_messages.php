@@ -16,7 +16,16 @@ $db -> setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
 //echo json_encode($_SESSION['read_messages'])
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    
+    $Query       = "SELECT message_id FROM messages_read WHERE reader_id = '{$_SESSION['id']}';";
+    $statement   = $db->prepare($Query);
+    $statement  -> bindParam(':recipient', $recipient, PDO::PARAM_STR);
+    $statement  -> execute();
+    $message_ids = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+    $_SESSION['read_messages'] = array($message_ids);
     
     if(!isset($_SESSION['read_messages'])){
         $_SESSION['read_messages'] = array();
