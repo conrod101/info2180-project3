@@ -55,7 +55,7 @@ if(!$_SESSION['logginSuccess']){
                             <div class="container-fluid">
                                 <!-- Brand and toggle get grouped for better mobile display -->
                                 <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ik" aria-expanded="false">
                                 <span class="sr-only">Toggle navigation</span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -68,7 +68,7 @@ if(!$_SESSION['logginSuccess']){
                     </div>
                     <div class="row">
                         <div class="col-md-2" id="column-resize">
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <div class="collapse navbar-collapse" id="ik">
                                 <button id="btn_email" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                             New E-mail
                         </button>
@@ -77,28 +77,22 @@ if(!$_SESSION['logginSuccess']){
                                 <br>
                                 
                             </div>
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <button id="btn_inbox">
-                            Inbox
-                        </button>
+                            <div class="collapse navbar-collapse" id="ik">
+                              
                                 <div id="treeview">
                                 </div>
                             </div>
                             <br>
                             
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <button id="btn_sent">
-                            Sentbox
-                        </button>
+                            <div class="collapse navbar-collapse" id="ik">
+                                
                                 <div id="treeview">
                                 </div>
                             </div>
                             <br>
                             
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <button id="btn_contacts">
-                            Contacts
-                        </button>
+                            <div class="collapse navbar-collapse" id="ik">
+                             
                                 <div id="treeview">
                                 </div>
                             </div>

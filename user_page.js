@@ -1,7 +1,7 @@
 let addRow;
 let displayMessage;
 
-let msgs = [{"message_id":"10","sender":"3","subject":"Suceess","date_saent":"2017-12-01 19:25:00","body":"Just tried the messaging functionality and it works."},{"message_id":"12","sender":"2","subject":"test","date_sent":"2017-12-01 20:14:08","body":"This be a test "}]
+let msgs = [{"message_id":"10","sender":"adp100","subject":"Suceess","date_saent":"2017-12-01 19:25:00","body":"Just tried the messaging functionality and it works."},{"message_id":"12","sender":"Abrown","subject":"test","date_sent":"2017-12-01 20:14:08","body":"This be a test "}]
 
 $(document).ready(function (){
     
@@ -11,13 +11,36 @@ $(document).ready(function (){
     
     setInterval(loadMessages,1000);
     
+    //addAllMessages(msgs)
+    
     closeButton.on("click", function(){
         $("form")[0].reset();
     })
     
-    $("table>tbody>tr").on("click", function(){
-        console.log("clicked");
-        //this.removeAttr("style");
+    $("#messagestable").on("click", "tbody tr", function(){
+        let id = $(this).children(".message_id").text();
+        
+        let readMessageData = {
+            "timestamp": getCurrentDate(),
+            "message_id": id
+        }
+        
+        console.log(id);
+        
+        $.ajax({
+            //dataType: "JSON",
+            data: readMessageData,
+            url: "read_messages.php",
+            type:"POST",
+            
+            success: function(response){
+                //console.log("success");
+                console.log(response);
+            },
+            failure: function(response){
+                console.log(response);
+            }
+        })
     })
     
     
@@ -88,13 +111,13 @@ $(document).ready(function (){
      }
     
     function displayMessage(messageObject){
-       let newRow = $(`<tr style="font-weight:bold"></tr>`);
+       let newRow = $(`<tr style="font-weight:bold" opened = 'false'></tr>`);
         
         let message_id      = $(`<td class = 'message_id'>${messageObject['message_id']}<td>`);
         let message_date    = $(`<td>${messageObject['date_sent']}<td>`);
         let message_sender  = $(`<td>${messageObject['sender']}<td>`);
         let message_subject = $(`<td>${messageObject['subject']}<td>`);
-        let message_body    = $(`<td>${messageObject['body']}<td>`);
+      //  let message_body    = $(`<td>${messageObject['body']}<td>`);
         
         newRow.append(message_sender);
         newRow.append(message_subject);

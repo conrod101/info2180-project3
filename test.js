@@ -1,6 +1,6 @@
 $(function () {
     $("#nav_page_a").on("click", function () {
-        $("#main").load("PageA.html");
+        $("#main").load("open_message.php");
     });
     
 });

@@ -12,6 +12,7 @@ session_start();
 $db = new PDO("mysql:host=$host;dbname=$database", $user,$password);
 $db -> setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     //Extract and sanitize message Data
     $recipients = explode(",",filter_var($_POST['recipients'],FILTER_SANITIZE_STRING));
