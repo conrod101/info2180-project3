@@ -14,7 +14,6 @@ session_start();
 $db = new PDO("mysql:host=$host;dbname=$database", $user,$password);
 $db -> setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
-//echo json_encode($_SESSION['read_messages'])
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -26,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $message_ids = $statement->fetchAll(PDO::FETCH_ASSOC);
     
     $_SESSION['read_messages'] = array($message_ids);
-    
+
     if(!isset($_SESSION['read_messages'])){
         $_SESSION['read_messages'] = array();
     }
@@ -39,11 +38,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
         array_push($_SESSION['read_messages'],$message_id);
         //var_dump($_SESSION['read_messages']);
+    
+        $Query       = "SELECT * FROM messages_read WHERE message_id = '{$message_id}';";
+        $statement   = $db->prepare($Query);
+        $statement  -> bindParam(':recipient', $recipient, PDO::PARAM_STR);
+        $statement  -> execute();
+        $message_ids = $statement->fetchAll(PDO::FETCH_ASSOC);
         
-        $stmt   =  "INSERT INTO messages_read (message_id,reader_id,date_read) VALUES ('{$message_id}','{$reader_id}','{$date_read}');";
-        $result =  $db->prepare($stmt);
-        $result -> execute();
-        
+        if($statement->rowCount()==0){
+            $stmt   =  "INSERT INTO messages_read (message_id,reader_id,date_read) VALUES ('{$message_id}','{$reader_id}','{$date_read}');";
+            $result =  $db->prepare($stmt);
+            $result -> execute();
+        }
     }
     
     echo json_encode(removeNullValues(($_SESSION['read_messages'])));
@@ -59,5 +65,3 @@ function removeNullValues($array){
 	}
 	return $goodValues;
 }
-    
-

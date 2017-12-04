@@ -62,7 +62,7 @@ if(!$_SESSION['logginSuccess']){
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                                    <a class="navbar-brand" id="brand" href="#">Hello, <u><?php echo $_SESSION['user']?></u></a>
+                                    <a class="navbar-brand" id="brand" href="#">Hello, <u><?php echo strtolower($_SESSION['user'])?></u></a>
                                 </div>
                             </div>
                         </nav>
@@ -70,7 +70,7 @@ if(!$_SESSION['logginSuccess']){
                     <div class="row">
                         <div class="col-md-2" id="column-resize">
                             <div class="collapse navbar-collapse" id="ik">
-                                <button id="btn_email" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                                <button id="btn_email" class="btn btn-danger" data-toggle="modal" data-target="#my_Modal">
                             New E-mail
                         </button>
                                 <div id="treeview">
@@ -166,7 +166,7 @@ if(!$_SESSION['logginSuccess']){
 
 
 <!-- Trigger/Open The mmodal -->
-<button id="myBtn">Open mmodal</button>
+<button class="hidbtn" id="myBtn"></button>
 
 <!-- The mmodal -->
 <div id="mymmodal" class="mmodal">
@@ -180,18 +180,16 @@ if(!$_SESSION['logginSuccess']){
           <h4 class="subject-title">Subject</h4>
           
         </div>
-        <div class="fname" style="float: left;"> <h3></h3></div>
-<div class="dtime" style="float: right;"><h3></h3></div>
+        <div class="fname" style="float: left;"> <h3>sender Div</h3></div>
+<div class="dtime" style="float: right;"><h3>Date Div</h3></div>
 <br>
         <div class="mmodal-body">
             <br>
             <br>
-          <p class="message_area">
-
-        </p>
+          <p class="message_area"></p>
         </div>
         <div class="mmodal-footer">
-          <button type="button" class="reply_btn" >Reply</button>
+          <button type="button" class="reply_btn" data-toggle="modal" data-target="#my_Modal">Reply</button>
         </div>
       </div>
       
@@ -210,7 +208,6 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the mmodal
 var span = document.getElementsByClassName("close")[0];
 
-
 // When the user clicks the button, open the mmodal 
 btn.onclick = function() {
     mmodal.style.display = "block";
@@ -227,7 +224,6 @@ window.onclick = function(event) {
         mmodal.style.display = "none";
     }
 }
-
 </script>
                                             <table  class="table table-hover" id = "messagestable">
 <thead>
@@ -264,7 +260,7 @@ window.onclick = function(event) {
                     </div>
 
                     <!-- Modal view -->
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+                    <div class="modal fade" id="my_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">

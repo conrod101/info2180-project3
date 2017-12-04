@@ -2,6 +2,7 @@
 <head>
     <meta charset="utf-8">
     <title>Cheapo Mail</title>
+    <!-- <link rel="favicon" type = "image/x-icon" href="/favicon.ico" /> -->
 
     <!-- you can modify this as needed or to your preference -->
     

@@ -1,7 +1,3 @@
-/*
- * GENERAL STYLES
- */
-
 html {
     height: 100%;
 }
@@ -121,9 +117,6 @@ body {
 }
 
 
-/*
- * ADMIN STYLES
- */
 
 .page.admin {
     display: table;
@@ -259,10 +252,7 @@ label {
     position: relative;
 }
 
-#compose{
-    border:2px #000099;
-    background-color: #00ff00;
-    border-radius: 30px;
+
 }
 
 .viewer{
@@ -355,14 +345,7 @@ label {
         font-weight: 600;
         text-align: justify;
     }
-  .message_box {
-  border: 1px solid #1C6EA4;
-  background-color: #EEEEEE;
-  width: 200%;
-  height: 200px;
-  text-align: left;
-  border-collapse: collapse;
-}
+ 
 
 .message_area {
     font-size: 15px;

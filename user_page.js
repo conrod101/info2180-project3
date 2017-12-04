@@ -8,6 +8,7 @@ $(document).ready(function (){
     let send              = $("#send");
     let url               = "messages.php";
     let closeButton       = $("#close_btn");
+    let modalMessageBox   = $("#mymmodal");
 
     
     setInterval(loadMessages,3000);
@@ -19,20 +20,22 @@ $(document).ready(function (){
     })
     
     $("#messagestable tbody").on("click", "tr", function(){
-        let modalBox  = $("#mymmodal");
         
         let firstname = $(this).data("additionalData")["firstname"];
         let lastname  = $(this).data("additionalData")["lastname"];
         let body      = $(this).data("additionalData")["body"];
         let subject   = $(this).data("additionalData")["subject"];
         let timestamp = $(this).data("additionalData")["timestamp"];
+        var sender        = $(this).data("additionalData")["username"];
         
         $(".fname h3").text(`${firstname} ${lastname}`);
         $(".mmodal-header h4").text(subject);
         $(".dtime h3").text(timestamp);
         $(".mmodal-body p").text(body);
         
-        $(modalBox).show();
+        
+        
+        $(modalMessageBox).show();
     
     })
     
@@ -64,8 +67,8 @@ $(document).ready(function (){
         })
     })
     
-    
     send.on("click",function(element){
+        
         
         let recipients = $("#to").val();
         let message    = $("#message").val();
@@ -78,8 +81,9 @@ $(document).ready(function (){
             "timestamp":getCurrentDate()
         };
         
-        console.log(messageData);
+        $("form")[0].reset();
         
+
         $.ajax({
             type: "POST",
             url: url,
@@ -153,7 +157,8 @@ $(document).ready(function (){
             "lastname":messageObject['lastname'],
             "body":messageObject['body'],
             "timestamp": messageObject["date_sent"],
-            "subject": messageObject['subject']
+            "subject": messageObject['subject'],
+            "sender": messageObject['username']
         })
         
         
