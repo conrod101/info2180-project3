@@ -5,14 +5,12 @@ let msgs = [{"message_id":"10","sender":"adp100","subject":"Suceess","date_saent
 
 $(document).ready(function (){
     
-    console.log = function(){};
-    
     let send              = $("#send");
     let url               = "messages.php";
     let closeButton       = $("#close_btn");
 
     
-    setInterval(loadMessages,1000);
+    setInterval(loadMessages,3000);
     
     //addAllMessages(msgs)
     
@@ -20,8 +18,25 @@ $(document).ready(function (){
         $("form")[0].reset();
     })
     
-    $("#messagestable").on("click", "tbody tr", function(){
+    $("#messagestable tbody").on("click", "tr", function(){
+        let modalBox  = $("#mymmodal");
         
+        let firstname = $(this).data("additionalData")["firstname"];
+        let lastname  = $(this).data("additionalData")["lastname"];
+        let body      = $(this).data("additionalData")["body"];
+        let subject   = $(this).data("additionalData")["subject"];
+        let timestamp = $(this).data("additionalData")["timestamp"];
+        
+        $(".fname h3").text(`${firstname} ${lastname}`);
+        $(".mmodal-header h4").text(subject);
+        $(".dtime h3").text(timestamp);
+        $(".mmodal-body p").text(body);
+        
+        $(modalBox).show();
+    
+    })
+    
+    $("#messagestable").on("click", "tbody tr", function(){
         $(this).css("font-weight","");
         
         let id = $(this).children(".message_id").text();
@@ -31,7 +46,7 @@ $(document).ready(function (){
             "message_id": id
         }
         
-        console.log(id);
+        //console.log(id);
         
         $.ajax({
             //dataType: "JSON",
@@ -41,7 +56,7 @@ $(document).ready(function (){
             
             success: function(response){
                 //console.log("success");
-                console.log(response);
+                //console.log(response);
             },
             failure: function(response){
                 console.log(response);
@@ -71,7 +86,7 @@ $(document).ready(function (){
             data: messageData,
             
             success: function(response){
-                console.log(response);
+                //console.log(response);
             },
             failure: function(response){
                 console.log(response);
@@ -136,7 +151,9 @@ $(document).ready(function (){
             "message_id": messageObject['message_id'],
             "firstname":messageObject['firstname'],
             "lastname":messageObject['lastname'],
-            "body":messageObject['body']
+            "body":messageObject['body'],
+            "timestamp": messageObject["date_sent"],
+            "subject": messageObject['subject']
         })
         
         
@@ -144,13 +161,11 @@ $(document).ready(function (){
         let message_date    = $(`<td>${messageObject['date_sent']}<td>`);
         let message_sender  = $(`<td>${messageObject['sender']}<td>`);
         let message_subject = $(`<td>${messageObject['subject']}<td>`);
-        let message_body    = $(`<td class = 'message_body'>${messageObject['body']}<td>`);
         
         newRow.append(message_sender);
         newRow.append(message_subject);
         newRow.append(message_date);
         newRow.append(message_id);
-        newRow.append(message_body);
         
         $("tbody").prepend(newRow);
     }
@@ -202,9 +217,8 @@ $(document).ready(function (){
             data = Data;
         }
         
-        console.log = function(){}
         let result = data.includes(messageObject['message_id']);
-        console.log(!result);
+        //console.log(!result);
         return !result;
     }
     

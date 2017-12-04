@@ -17,6 +17,7 @@ if(!$_SESSION['logginSuccess']){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/tab.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.1.css">
     <link rel="stylesheet" type="text/css" href="css/font.css">
     <link rel="stylesheet" type="text/css" href="css/chat.css">
     <link rel="stylesheet" type="text/css" href="css/table.css">
@@ -119,6 +120,115 @@ if(!$_SESSION['logginSuccess']){
                                         <hr>
                                         
                                         <div id="grid">
+                                             <style>
+/* The mmodal (background) */
+.mmodal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* mmodal Content */
+.mmodal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+
+
+<!-- Trigger/Open The mmodal -->
+<button id="myBtn">Open mmodal</button>
+
+<!-- The mmodal -->
+<div id="mymmodal" class="mmodal">
+
+  <!-- mmodal content -->
+  <div class="mmodal-content">
+        <div class="mmodal-header">
+            
+          <button type="button" class="close" data-dismiss="mmodal">&times;</button>
+          
+          <h4 class="subject-title">Subject</h4>
+          
+        </div>
+        <div class="fname" style="float: left;"> <h3></h3></div>
+<div class="dtime" style="float: right;"><h3></h3></div>
+<br>
+        <div class="mmodal-body">
+            <br>
+            <br>
+          <p class="message_area">
+
+        </p>
+        </div>
+        <div class="mmodal-footer">
+          <button type="button" class="reply_btn" >Reply</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+<script>
+// Get the mmodal
+var mmodal = document.getElementById('mymmodal');
+
+// Get the button that opens the mmodal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the mmodal
+var span = document.getElementsByClassName("close")[0];
+
+
+// When the user clicks the button, open the mmodal 
+btn.onclick = function() {
+    mmodal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the mmodal
+span.onclick = function() {
+    mmodal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the mmodal, close it
+window.onclick = function(event) {
+    if (event.target == mmodal) {
+        mmodal.style.display = "none";
+    }
+}
+
+</script>
                                             <table  class="table table-hover" id = "messagestable">
 <thead>
    

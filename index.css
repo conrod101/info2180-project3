@@ -366,6 +366,7 @@ label {
 
 .message_area {
     font-size: 15px;
+    text-align: justify
 }
 .message_id {
     display:none;
